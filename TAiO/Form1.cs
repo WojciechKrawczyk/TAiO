@@ -27,11 +27,19 @@ namespace TAiO
 
         private void ReadFileButtonClick(object sender, EventArgs e)
         {
-            FileReader fileReader = new FileReader();
-            var (graph1, graph2) = fileReader.ProccessFile();
-            ProblemRepresentation = new ProblemRepresentation(graph1, graph2);
-
             CommentsBox.Clean();
+            FileReader fileReader = new FileReader();
+/*            try
+            {*/
+                var (graph1, graph2) = fileReader.ProccessFile();
+                ProblemRepresentation = new ProblemRepresentation(graph1, graph2);
+/*            }
+            catch
+            {
+                CommentsBox.AddTextLine("Wybrany plik ma zły format.");
+                return;
+            }*/
+
             foreach(var line in ProblemRepresentation.GetComments())
             {
                 CommentsBox.AddTextLine(line);

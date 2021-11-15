@@ -6,8 +6,8 @@ namespace TAiO
 {
     class FileReader
     {
-        //private readonly string InitialDirectoryPath = "C:\\";
-        private readonly string InitialDirectoryPath = "C:\\Users\\Dell\\Desktop\\TAiO-REPO\\TAiO\\Templates";
+        private readonly string InitialDirectoryPath = @"C:\";
+        //private readonly string InitialDirectoryPath = "C:\\Users\\Dell\\Desktop\\TAiO-REPO\\TAiO\\Templates";
 
         public (GraphWithRepresentation graph1, GraphWithRepresentation graph2) ProccessFile()
         {
