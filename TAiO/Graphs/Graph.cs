@@ -1,4 +1,6 @@
-﻿namespace TAiO.Graphs
+﻿using System.Text;
+
+namespace TAiO.Graphs
 {
     public class Graph
     {
@@ -21,7 +23,7 @@
             {
                 for (int j = 0; j < size; j++)
                 {
-                    if (i < Size)
+                    if (i < Size && j < Size)
                         IncidenceMatrix[i, j] = oldMatrix[i, j];
                     else
                         IncidenceMatrix[i, j] = 0;
@@ -53,6 +55,23 @@
         public virtual void UpdateMatrix(int[,] matrix)
         {
             IncidenceMatrix = matrix;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    stringBuilder.Append(IncidenceMatrix[i, j].ToString());
+                    stringBuilder.Append(",");
+                }
+            }
+
+            string str = stringBuilder.ToString();
+            str = str.Remove(str.Length - 1);
+            return str;
         }
     }
 }

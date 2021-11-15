@@ -67,7 +67,7 @@ namespace TAiO
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 515);
+            this.label1.Location = new System.Drawing.Point(12, 575);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(159, 20);
             this.label1.TabIndex = 2;
@@ -83,7 +83,7 @@ namespace TAiO
             // 
             // RichTextBoxComments
             // 
-            this.RichTextBoxComments.Location = new System.Drawing.Point(12, 538);
+            this.RichTextBoxComments.Location = new System.Drawing.Point(12, 598);
             this.RichTextBoxComments.Name = "RichTextBoxComments";
             this.RichTextBoxComments.Size = new System.Drawing.Size(705, 77);
             this.RichTextBoxComments.TabIndex = 4;
@@ -94,7 +94,7 @@ namespace TAiO
             this.RichTextBoxGraph1.Font = new System.Drawing.Font("Segoe Script", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.RichTextBoxGraph1.Location = new System.Drawing.Point(49, 103);
             this.RichTextBoxGraph1.Name = "RichTextBoxGraph1";
-            this.RichTextBoxGraph1.Size = new System.Drawing.Size(295, 295);
+            this.RichTextBoxGraph1.Size = new System.Drawing.Size(295, 341);
             this.RichTextBoxGraph1.TabIndex = 5;
             this.RichTextBoxGraph1.Text = "";
             // 
@@ -103,7 +103,7 @@ namespace TAiO
             this.RichtextBoxGraph2.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.RichtextBoxGraph2.Location = new System.Drawing.Point(385, 103);
             this.RichtextBoxGraph2.Name = "RichtextBoxGraph2";
-            this.RichtextBoxGraph2.Size = new System.Drawing.Size(295, 295);
+            this.RichtextBoxGraph2.Size = new System.Drawing.Size(295, 341);
             this.RichtextBoxGraph2.TabIndex = 6;
             this.RichtextBoxGraph2.Text = "";
             // 
@@ -128,7 +128,7 @@ namespace TAiO
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(241, 425);
+            this.label4.Location = new System.Drawing.Point(241, 499);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 20);
             this.label4.TabIndex = 9;
@@ -137,7 +137,7 @@ namespace TAiO
             // LabelTimeResult
             // 
             this.LabelTimeResult.AutoSize = true;
-            this.LabelTimeResult.Location = new System.Drawing.Point(385, 425);
+            this.LabelTimeResult.Location = new System.Drawing.Point(385, 499);
             this.LabelTimeResult.Name = "LabelTimeResult";
             this.LabelTimeResult.Size = new System.Drawing.Size(18, 20);
             this.LabelTimeResult.TabIndex = 10;
@@ -146,7 +146,7 @@ namespace TAiO
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(291, 460);
+            this.label6.Location = new System.Drawing.Point(291, 534);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 20);
             this.label6.TabIndex = 11;
@@ -155,7 +155,7 @@ namespace TAiO
             // LabelCalculationsResult
             // 
             this.LabelCalculationsResult.AutoSize = true;
-            this.LabelCalculationsResult.Location = new System.Drawing.Point(385, 460);
+            this.LabelCalculationsResult.Location = new System.Drawing.Point(385, 534);
             this.LabelCalculationsResult.Name = "LabelCalculationsResult";
             this.LabelCalculationsResult.Size = new System.Drawing.Size(18, 20);
             this.LabelCalculationsResult.TabIndex = 12;
@@ -165,7 +165,7 @@ namespace TAiO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(731, 627);
+            this.ClientSize = new System.Drawing.Size(731, 687);
             this.Controls.Add(this.LabelCalculationsResult);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.LabelTimeResult);

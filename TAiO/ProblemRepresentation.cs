@@ -52,7 +52,7 @@ namespace TAiO
                 comments.Add($"Graf {_smaller} został rozszerzony o {InitialCost} izolowanych wierzchołków.");
             }
             if (!IsSmall)
-                comments.Add("Grafy są za duże, żeby zaprezentować ich macierze incydencji");
+                comments.Add("Grafy są za duże, żeby zaprezentować ich macierze incydencji.");
 
             return comments.ToArray();
         }
