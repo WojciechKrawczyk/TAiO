@@ -29,16 +29,16 @@ namespace TAiO
         {
             CommentsBox.Clean();
             FileReader fileReader = new FileReader();
-/*            try
-            {*/
+            try
+            {
                 var (graph1, graph2) = fileReader.ProccessFile();
                 ProblemRepresentation = new ProblemRepresentation(graph1, graph2);
-/*            }
+            }
             catch
             {
                 CommentsBox.AddTextLine("Wybrany plik ma zły format.");
                 return;
-            }*/
+            }
 
             foreach(var line in ProblemRepresentation.GetComments())
             {
