@@ -17,6 +17,7 @@ namespace TAiO
 
         public ProblemRepresentation(GraphWithRepresentation graph1, GraphWithRepresentation graph2)
         {
+            InitialCost = Math.Abs(graph1.Size - graph2.Size);
             if (graph1.Size >= graph2.Size)
             {
                 Graph1 = graph1;
@@ -37,22 +38,26 @@ namespace TAiO
                 Graph1.Extend(Graph2.Size);
             }
             Size = Graph1.Size;
-            InitialCost = Math.Abs(Graph1.Size - Graph2.Size);
             IsSmall = Graph1.Size <= _sizeThreshold & Graph2.Size <= _sizeThreshold ? true : false;
         }
 
         public string[] GetComments()
         {
+            var comentEnds = new string[] { "izolowany wierzchołek", "izolowane wierzchołki", "izolowanych wierzchołków" };
+
             var comments = new List<string>();
             if (InitialCost == 0)
                 comments.Add("Wejściowe grafy mają taki sam rozmiar.");
             else
             {
                 comments.Add($"Graf {_smaller} miał mniej wierzchołków niż graf {_bigger}.");
-                comments.Add($"Graf {_smaller} został rozszerzony o {InitialCost} izolowanych wierzchołków.");
+                var commentEnd = InitialCost == 1
+                    ? comentEnds[0]
+                    : InitialCost % 10 == 2 || InitialCost % 10 == 3 || InitialCost % 10 == 4
+                        ? comentEnds[1]
+                        : comentEnds[2];
+                comments.Add($"Graf {_smaller} został rozszerzony o {InitialCost} {commentEnd}.");
             }
-            if (!IsSmall)
-                comments.Add("Grafy są za duże, żeby zaprezentować ich macierze incydencji.");
 
             return comments.ToArray();
         }

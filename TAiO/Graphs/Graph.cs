@@ -9,7 +9,14 @@ namespace TAiO.Graphs
 
         public Graph(int[,] incidenceMatrix, int size)
         {
-            IncidenceMatrix = incidenceMatrix;
+            IncidenceMatrix = new int[size, size];
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    IncidenceMatrix[i, j] = incidenceMatrix[i, j];
+                }
+            }
             Size = size;
         }
 

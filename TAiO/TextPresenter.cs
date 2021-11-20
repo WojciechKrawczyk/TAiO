@@ -9,7 +9,7 @@ namespace TAiO
         {
             RichTextBox = richTextBox;
             RichTextBox.Modified = false;
-            RichTextBox.Font = new System.Drawing.Font("Calibri", fontSize);
+            RichTextBox.Font = new System.Drawing.Font("Courier", fontSize);
         }
 
         public void AddTextLine(string text) => RichTextBox.Text += text + '\n';

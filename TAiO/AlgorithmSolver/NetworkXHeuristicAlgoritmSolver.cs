@@ -1,28 +1,26 @@
 ﻿using TAiO.Graphs;
 using System.Diagnostics;
 using System.Text;
+using System.Windows.Forms;
 
 namespace TAiO.AlgorithmSolver
 {
-    public class HeuristicAlgoritmSolver : IAlgorithmSolver
+    public class NetworkXHeuristicAlgoritmSolver : IAlgorithmSolver
     {
-        private readonly Graph _graph1;
-        private readonly Graph _graph2;
-        private readonly int _initialCost;
-        private const string _pathToScript = @"C:\Users\Dell\Desktop\TAiO-REPO\TAiO\PythonScripts\LIB-aprox.py";
+        private Graph _graph1;
+        private Graph _graph2;
+        private int _initialCost;
+        private const string _pathToScript = @"C:\Users\Dell\Desktop\TAiO-Final\TAiO\PythonScripts\LIB-aprox.py";
         private const string _pathToPython = @"C:\Users\Dell\AppData\Local\Programs\Python\Python38-32\python.exe";
 
-        public HeuristicAlgoritmSolver(ProblemRepresentation problem)
+        public (int bestCost, int[,] bestMatrix, int[] bestPermutation) CalculateSimilarity(ProblemRepresentation problem)
         {
             _graph1 = problem.Graph1;
             _graph2 = problem.Graph2;
             _initialCost = problem.InitialCost;
-        }
 
-        public int CalculateSimilarity()
-        {
             int result = RunPythonProg();
-            return result + _initialCost;
+            return (result + _initialCost, null, null);
         }
 
         private int RunPythonProg()
@@ -43,13 +41,14 @@ namespace TAiO.AlgorithmSolver
             psi.RedirectStandardOutput = true;
             psi.RedirectStandardError = true;
 
-            //Execute python and get output
-            var errors = string.Empty;
-            var results = string.Empty;
-
             using var process = Process.Start(psi);
-            errors = process.StandardError.ReadToEnd();
-            results = process.StandardOutput.ReadToEnd();
+            var errors = process.StandardError.ReadToEnd();
+            if (errors != string.Empty)
+            {
+                MessageBox.Show("Wystąpił nieoczekiwany błąd. Spróbuj ponownie.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+            var results = process.StandardOutput.ReadToEnd();
 
             System.Console.WriteLine("Results");
             System.Console.WriteLine(results);

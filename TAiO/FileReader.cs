@@ -4,20 +4,22 @@ using TAiO.Graphs;
 
 namespace TAiO
 {
-    class FileReader
+    public class FileReader
     {
-        private readonly string InitialDirectoryPath = @"C:\";
-        //private readonly string InitialDirectoryPath = "C:\\Users\\Dell\\Desktop\\TAiO-REPO\\TAiO\\Templates";
+        private OpenFileDialog FileDialog;
+
+        public FileReader()
+        {
+            FileDialog = new OpenFileDialog();
+            FileDialog.Filter = "txt files (*.txt)|*.txt";
+            FileDialog.RestoreDirectory = true;
+        }
 
         public (GraphWithRepresentation graph1, GraphWithRepresentation graph2) ProccessFile()
         {
-            using var fileDialog = new OpenFileDialog();
-            fileDialog.InitialDirectory = InitialDirectoryPath;
-            fileDialog.Filter = "txt files (*.txt)|*.txt";
-
-            if (fileDialog.ShowDialog() == DialogResult.OK)
+            if (FileDialog.ShowDialog() == DialogResult.OK)
             {
-                using var reader = new StreamReader(fileDialog.OpenFile());
+                using var reader = new StreamReader(FileDialog.OpenFile());
                 GraphWithRepresentation graph1 = new GraphWithRepresentation(reader, 1);
                 GraphWithRepresentation graph2 = new GraphWithRepresentation(reader, 2);
 
@@ -25,5 +27,7 @@ namespace TAiO
             }
             return (null, null);
         }
+
+        public void ErrorHandle() => MessageBox.Show("Nie udało się wczytać pliku.\nUpewnij się, że wybrany plik ma dobry format.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
     }
 }

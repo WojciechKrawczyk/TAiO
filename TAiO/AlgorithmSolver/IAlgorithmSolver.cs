@@ -2,6 +2,6 @@
 {
     public interface IAlgorithmSolver
     {
-        public int CalculateSimilarity();
+        public (int bestCost, int[,] bestMatrix, int[] bestPermutation) CalculateSimilarity(ProblemRepresentation problem);
     }
 }

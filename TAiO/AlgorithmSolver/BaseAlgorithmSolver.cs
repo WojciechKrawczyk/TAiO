@@ -1,36 +1,34 @@
 ﻿using System;
+using System.Linq;
 using TAiO.Graphs;
 
 namespace TAiO.AlgorithmSolver
 {
     public class BaseAlgorithmSolver : IAlgorithmSolver
     {
-        private readonly Graph _graph1;
-        private readonly Graph _graph2;
-        private readonly int n;
-        private readonly int _initialCost;
-        private readonly string _toPermutations;
+        private Graph _graph1;
+        private Graph _graph2;
+        private int n;
+        private int _initialCost;
+        private string _toPermutations;
         private int _bestCost = int.MaxValue;
         private int[,] _bestCostMatrix;
+        private string _bestPermutation;
 
-        public BaseAlgorithmSolver(ProblemRepresentation problem)
+        public (int bestCost, int[,] bestMatrix, int[] bestPermutation) CalculateSimilarity(ProblemRepresentation problem)
         {
-            _graph1 = problem.Graph1;
-            _graph2 = problem.Graph2;
+            _graph1 = new Graph(problem.Graph1.IncidenceMatrix, problem.Size);
+            _graph2 = new Graph(problem.Graph2.IncidenceMatrix, problem.Size);
             _initialCost = problem.InitialCost;
             n = problem.Size;
             _toPermutations = string.Empty;
             for (int i = 0; i < n; i++)
                 _toPermutations += i.ToString();
-        }
+            _bestPermutation = new string(_toPermutations);
 
-        public int CalculateSimilarity()
-        {
             StartPermutations(_toPermutations, 0, n - 1);
-            return _bestCost + _initialCost;
+            return (_bestCost + _initialCost, _bestCostMatrix, _bestPermutation.ToCharArray().Select(x => int.Parse(x.ToString())).ToArray());
         }
-
-        public int[,] GetBestMatrix() => _bestCostMatrix;
 
         private bool StartPermutations(string input, int l, int r)
         {
@@ -79,6 +77,7 @@ namespace TAiO.AlgorithmSolver
             {
                 _bestCost = result;
                 _bestCostMatrix = tmpGraph.IncidenceMatrix;
+                _bestPermutation = permutation;
             }
             return result;
         }
