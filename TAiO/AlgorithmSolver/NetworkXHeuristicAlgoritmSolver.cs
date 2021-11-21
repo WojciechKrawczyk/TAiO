@@ -11,7 +11,7 @@ namespace TAiO.AlgorithmSolver
         private Graph _graph2;
         private int _initialCost;
         private const string _pathToScript = @"..\..\..\..\PythonScripts\LIB-aprox.py";
-        private const string _pathToPython = @"C:\Users\Aliaksei\AppData\Local\Microsoft\WindowsApps\python.exe";
+        private const string _pathToPython = @"C:\Users\Dell\AppData\Local\Programs\Python\Python38-32\python.exe";
 
         public (int bestCost, int[,] bestMatrix, int[] bestPermutation) CalculateSimilarity(ProblemRepresentation problem)
         {

@@ -31,6 +31,7 @@ namespace TAiO
 
             StartCalculationsButton.Enabled = false;
             RBNetworkX.Checked = true;
+            RBLSAP.Visible = false;
         }
 
         private void ReadFileButtonClick(object sender, EventArgs e)

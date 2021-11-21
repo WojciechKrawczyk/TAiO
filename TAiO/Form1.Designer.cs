@@ -203,7 +203,7 @@ namespace TAiO
             // RBPrecision
             // 
             this.RBPrecision.AutoSize = true;
-            this.RBPrecision.Location = new System.Drawing.Point(12, 92);
+            this.RBPrecision.Location = new System.Drawing.Point(6, 78);
             this.RBPrecision.Name = "RBPrecision";
             this.RBPrecision.Size = new System.Drawing.Size(155, 24);
             this.RBPrecision.TabIndex = 19;
@@ -215,7 +215,7 @@ namespace TAiO
             // RBLSAP
             // 
             this.RBLSAP.AutoSize = true;
-            this.RBLSAP.Location = new System.Drawing.Point(12, 61);
+            this.RBLSAP.Location = new System.Drawing.Point(6, 18);
             this.RBLSAP.Name = "RBLSAP";
             this.RBLSAP.Size = new System.Drawing.Size(269, 24);
             this.RBLSAP.TabIndex = 18;
@@ -227,12 +227,12 @@ namespace TAiO
             // RBNetworkX
             // 
             this.RBNetworkX.AutoSize = true;
-            this.RBNetworkX.Location = new System.Drawing.Point(12, 31);
+            this.RBNetworkX.Location = new System.Drawing.Point(6, 48);
             this.RBNetworkX.Name = "RBNetworkX";
-            this.RBNetworkX.Size = new System.Drawing.Size(301, 24);
+            this.RBNetworkX.Size = new System.Drawing.Size(199, 24);
             this.RBNetworkX.TabIndex = 17;
             this.RBNetworkX.TabStop = true;
-            this.RBNetworkX.Text = "algorytm aproksymacyjny NetworkX GED";
+            this.RBNetworkX.Text = "algorytm aproksymacyjny";
             this.RBNetworkX.UseVisualStyleBackColor = true;
             this.RBNetworkX.CheckedChanged += new System.EventHandler(this.RBNetworkX_CheckedChanged);
             // 
