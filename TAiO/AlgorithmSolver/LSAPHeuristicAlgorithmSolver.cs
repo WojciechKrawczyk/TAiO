@@ -33,7 +33,7 @@ namespace TAiO.AlgorithmSolver
             argv.Append(_graph1.ToString());
             argv.Append(",");
             argv.Append(_graph2.ToString());
-
+               
             psi.Arguments = $"\"{_pathToScript}\" \"{argv}\"";
             psi.UseShellExecute = false;
             psi.CreateNoWindow = true;

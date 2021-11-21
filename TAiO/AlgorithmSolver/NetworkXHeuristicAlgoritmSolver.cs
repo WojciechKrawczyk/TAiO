@@ -10,8 +10,7 @@ namespace TAiO.AlgorithmSolver
         private Graph _graph1;
         private Graph _graph2;
         private int _initialCost;
-        private const string _pathToScript = @"..\..\..\..\PythonScripts\LIB-aprox.py";
-        private const string _pathToPython = @"C:\Users\Dell\AppData\Local\Programs\Python\Python38-32\python.exe";
+        private string _pathToPython = System.IO.Directory.GetCurrentDirectory() + @"\aprox.exe";
 
         public (int bestCost, int[,] bestMatrix, int[] bestPermutation) CalculateSimilarity(ProblemRepresentation problem)
         {
@@ -35,17 +34,18 @@ namespace TAiO.AlgorithmSolver
             argv.Append(",");
             argv.Append(_graph2.ToString());
 
-            psi.Arguments = $"\"{_pathToScript}\" \"{argv}\"";
+            psi.Arguments = $"\"{argv}\"";
             psi.UseShellExecute = false;
             psi.CreateNoWindow = true;
             psi.RedirectStandardOutput = true;
             psi.RedirectStandardError = true;
 
+            MessageBox.Show("Proszę poczekać na wynik algorytmu aproksymacyjnego. Może potrwać trochę dłużej z powodu komunikacji między C# a Python'em");
             using var process = Process.Start(psi);
             var errors = process.StandardError.ReadToEnd();
             if (errors != string.Empty)
             {
-                MessageBox.Show("Wystąpił nieoczekiwany błąd. Spróbuj ponownie.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(errors.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return -1;
             }
             var results = process.StandardOutput.ReadToEnd();
