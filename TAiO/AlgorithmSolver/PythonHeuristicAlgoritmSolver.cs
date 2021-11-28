@@ -5,12 +5,18 @@ using System.Windows.Forms;
 
 namespace TAiO.AlgorithmSolver
 {
-    public class NetworkXHeuristicAlgoritmSolver : IAlgorithmSolver
+    public class PythonHeuristicAlgoritmSolver : IAlgorithmSolver
     {
         private Graph _graph1;
         private Graph _graph2;
         private int _initialCost;
-        private string _pathToPython = System.IO.Directory.GetCurrentDirectory() + @"\aprox.exe";
+        private string _fileName;
+        private string _pathToFile = System.IO.Directory.GetCurrentDirectory();
+
+        public PythonHeuristicAlgoritmSolver(string fileName)
+        {
+            _fileName = fileName;
+        }
 
         public (int bestCost, int[,] bestMatrix, int[] bestPermutation) CalculateSimilarity(ProblemRepresentation problem)
         {
@@ -25,7 +31,7 @@ namespace TAiO.AlgorithmSolver
         private int RunPythonProg()
         {
             var psi = new ProcessStartInfo();
-            psi.FileName = _pathToPython;
+            psi.FileName = _pathToFile + $"{@"\"}{_fileName}";
 
             var argv = new StringBuilder();
             argv.Append(_graph1.Size.ToString());
@@ -40,12 +46,11 @@ namespace TAiO.AlgorithmSolver
             psi.RedirectStandardOutput = true;
             psi.RedirectStandardError = true;
 
-            MessageBox.Show("Proszę poczekać na wynik algorytmu aproksymacyjnego. Może potrwać trochę dłużej z powodu komunikacji między C# a Python'em");
             using var process = Process.Start(psi);
             var errors = process.StandardError.ReadToEnd();
             if (errors != string.Empty)
             {
-                MessageBox.Show(errors.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Wystąpił nieoczekiwany błąd. Spróbuj ponownie.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return -1;
             }
             var results = process.StandardOutput.ReadToEnd();

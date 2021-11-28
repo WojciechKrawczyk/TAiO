@@ -15,6 +15,8 @@ namespace TAiO
         public static TextPresenter CommentsBox;
         public static IAlgorithmSolver AlgorithmSolver;
         public static FileReader FileReader;
+        private const string _lsapGedExeName = "LSAP-GED-aprox.exe";
+        private const string _gedExeName = "GED-aprox.exe";
 
         public ProjectForm()
         {
@@ -31,7 +33,6 @@ namespace TAiO
 
             StartCalculationsButton.Enabled = false;
             RBNetworkX.Checked = true;
-            RBLSAP.Visible = false;
         }
 
         private void ReadFileButtonClick(object sender, EventArgs e)
@@ -47,6 +48,9 @@ namespace TAiO
                 return;
             }
 
+            if (graph1 == null || graph2 == null)
+                return;
+
             ProblemRepresentation = new ProblemRepresentation(graph1, graph2);
 
             HandleProblemSize();
@@ -59,6 +63,7 @@ namespace TAiO
             {
                 CommentsBox.AddTextLine(line);
             }
+            stateLabel.Text = "Program jest gotowy\ndo rozpoczęcia obliczeń.";
         }
 
         private void HandleProblemSize()
@@ -93,6 +98,7 @@ namespace TAiO
 
         private void StartCalculationsButtonClick(object sender, EventArgs e)
         {
+            stateLabel.Text = "Program jest w trakcie\nwykonywania obliczeń.";
             var sw = new Stopwatch();
             sw.Start();
             var result = AlgorithmSolver.CalculateSimilarity(ProblemRepresentation);
@@ -109,18 +115,19 @@ namespace TAiO
             LabelTimeResult.Text = sw.Elapsed.TotalSeconds.ToString("F") + " s";
 
             StartCalculationsButton.Enabled = false;
+            stateLabel.Text = "Obliczenia zostały zakończone.\nZapoznaj się z wynikami.";
         }
 
         private void RBNetworkX_CheckedChanged(object sender, EventArgs e)
         {
             if (RBNetworkX.Checked)
-                AlgorithmSolver = new NetworkXHeuristicAlgoritmSolver();
+                AlgorithmSolver = new PythonHeuristicAlgoritmSolver(_gedExeName);
         }
 
         private void RBLSAP_CheckedChanged(object sender, EventArgs e)
         {
             if (RBLSAP.Checked)
-                AlgorithmSolver = new LSAPHeuristicAlgorithmSolver();
+                AlgorithmSolver = new PythonHeuristicAlgoritmSolver(_lsapGedExeName);
         }
 
         private void RBPrecision_CheckedChanged(object sender, EventArgs e)

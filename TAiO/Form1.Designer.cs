@@ -51,6 +51,8 @@ namespace TAiO
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.stateLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -59,6 +61,7 @@ namespace TAiO
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // ReadFileButton
@@ -132,7 +135,7 @@ namespace TAiO
             // LabelTimeResult
             // 
             this.LabelTimeResult.AutoSize = true;
-            this.LabelTimeResult.Location = new System.Drawing.Point(178, 90);
+            this.LabelTimeResult.Location = new System.Drawing.Point(149, 90);
             this.LabelTimeResult.Name = "LabelTimeResult";
             this.LabelTimeResult.Size = new System.Drawing.Size(15, 20);
             this.LabelTimeResult.TabIndex = 10;
@@ -143,14 +146,14 @@ namespace TAiO
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(15, 49);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(157, 20);
+            this.label6.Size = new System.Drawing.Size(63, 20);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Podobieństwo grafów:";
+            this.label6.Text = "Dystans:";
             // 
             // LabelCalculationsResult
             // 
             this.LabelCalculationsResult.AutoSize = true;
-            this.LabelCalculationsResult.Location = new System.Drawing.Point(178, 49);
+            this.LabelCalculationsResult.Location = new System.Drawing.Point(149, 49);
             this.LabelCalculationsResult.Name = "LabelCalculationsResult";
             this.LabelCalculationsResult.Size = new System.Drawing.Size(15, 20);
             this.LabelCalculationsResult.TabIndex = 12;
@@ -193,7 +196,7 @@ namespace TAiO
             this.groupBox2.Controls.Add(this.RBPrecision);
             this.groupBox2.Controls.Add(this.RBLSAP);
             this.groupBox2.Controls.Add(this.RBNetworkX);
-            this.groupBox2.Location = new System.Drawing.Point(241, 42);
+            this.groupBox2.Location = new System.Drawing.Point(203, 42);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(316, 133);
             this.groupBox2.TabIndex = 16;
@@ -203,7 +206,7 @@ namespace TAiO
             // RBPrecision
             // 
             this.RBPrecision.AutoSize = true;
-            this.RBPrecision.Location = new System.Drawing.Point(6, 78);
+            this.RBPrecision.Location = new System.Drawing.Point(6, 93);
             this.RBPrecision.Name = "RBPrecision";
             this.RBPrecision.Size = new System.Drawing.Size(155, 24);
             this.RBPrecision.TabIndex = 19;
@@ -215,7 +218,7 @@ namespace TAiO
             // RBLSAP
             // 
             this.RBLSAP.AutoSize = true;
-            this.RBLSAP.Location = new System.Drawing.Point(6, 18);
+            this.RBLSAP.Location = new System.Drawing.Point(6, 33);
             this.RBLSAP.Name = "RBLSAP";
             this.RBLSAP.Size = new System.Drawing.Size(269, 24);
             this.RBLSAP.TabIndex = 18;
@@ -227,12 +230,12 @@ namespace TAiO
             // RBNetworkX
             // 
             this.RBNetworkX.AutoSize = true;
-            this.RBNetworkX.Location = new System.Drawing.Point(6, 48);
+            this.RBNetworkX.Location = new System.Drawing.Point(6, 63);
             this.RBNetworkX.Name = "RBNetworkX";
-            this.RBNetworkX.Size = new System.Drawing.Size(199, 24);
+            this.RBNetworkX.Size = new System.Drawing.Size(232, 24);
             this.RBNetworkX.TabIndex = 17;
             this.RBNetworkX.TabStop = true;
-            this.RBNetworkX.Text = "algorytm aproksymacyjny";
+            this.RBNetworkX.Text = "algorytm aproksymacyjny GED";
             this.RBNetworkX.UseVisualStyleBackColor = true;
             this.RBNetworkX.CheckedChanged += new System.EventHandler(this.RBNetworkX_CheckedChanged);
             // 
@@ -290,11 +293,31 @@ namespace TAiO
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Przebieg obliczeń";
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.stateLabel);
+            this.groupBox8.Location = new System.Drawing.Point(525, 42);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(280, 133);
+            this.groupBox8.TabIndex = 20;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Stan programu";
+            // 
+            // stateLabel
+            // 
+            this.stateLabel.AutoSize = true;
+            this.stateLabel.Location = new System.Drawing.Point(16, 63);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(227, 20);
+            this.stateLabel.TabIndex = 0;
+            this.stateLabel.Text = "Wczytaj dane i wybierz algorytm.";
+            // 
             // ProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(811, 705);
+            this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -302,7 +325,9 @@ namespace TAiO
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "ProjectForm";
             this.Text = "TAiO Podobieństwo grafów";
             this.menuStrip1.ResumeLayout(false);
@@ -316,6 +341,8 @@ namespace TAiO
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,6 +372,8 @@ namespace TAiO
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label stateLabel;
     }
 }
 
